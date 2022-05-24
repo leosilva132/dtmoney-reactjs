@@ -17,7 +17,7 @@ createServer({
         title: 'Freela Web Aplications',
         type: 'deposit',
         category: 'Dev',
-        amount: 2000,
+        amount: 6000,
         createdAt: new Date('2022-05-11 09:00:00'),
       },
       {
@@ -25,7 +25,7 @@ createServer({
         title: 'Aluguel',
         type: 'withdraw',
         category: 'Casa',
-        amount: 8000,
+        amount: 1100,
         createdAt: new Date('2022-05-12 09:00:00'),
       }
     ]
@@ -35,14 +35,12 @@ createServer({
   routes(){
     this.namespace = 'api';
 
-    this.get('/transactions', () => {
-      return this.schema.all('transaction')
-    })
+    this.get('/transactions', () => this.schema.all('transaction'))
 
     this.post('/transactions', (schema, request) => {
       const data = JSON.parse(request.requestBody)
 
-      return schema.create('transacation', data)
+      return schema.create('transaction', data)
     })
   }
 });
